@@ -1,5 +1,4 @@
 import React from "react";
-
 const AddUser = () => {
   const handleAddUser = (event) => {
     event.preventDefault();
@@ -8,19 +7,20 @@ const AddUser = () => {
     const email = event.target.email.value;
 
     const user = { name, email };
-    
 
-    fetch("http://localhost:5000/user ", {
+    fetch("http://localhost:5000/user", {
       method: "POST", // or 'PUT'
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(user),
-    })    
-      .then(res => res.json())
-      .then(data => {
-          console.log('success ',data);
-      })
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log("success", data);
+        alert("users added successfully!");
+        event.target.reset();
+      });
   };
 
   return (
